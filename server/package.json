@@ -1,0 +1,27 @@
+{
+  "name": "frontend-training-jguardado",
+  "version": "1.0.0",
+  "description": "FE Training, part of KQED's internship program",
+  "main": "script.js",
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.21"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server",
+    "dev": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KQED/frontend-training-jguardado.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KQED/frontend-training-jguardado/issues"
+  },
+  "homepage": "https://github.com/KQED/frontend-training-jguardado#readme"
+}
