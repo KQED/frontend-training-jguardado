@@ -1,7 +1,6 @@
 const express = require('express')
 const app = express()
-const path = require('path');
-
+const path = require('path')
 
 const config = {
   baseUrl: '/'
@@ -20,4 +19,4 @@ indexRouter.get('*', (req, res) => {
 
 app.use(config.baseUrl, indexRouter)
 
-app.listen(5001, () => { console.log("Server started on port 5001")})
+app.listen(5001, () => { console.log('Server started on port 5001') })

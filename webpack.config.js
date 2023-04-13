@@ -1,5 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ESLintPlugin = require('eslint-webpack-plugin');
 
 module.exports = {
   entry: path.join(__dirname, "./client/src", "./index.js"),
@@ -28,5 +29,6 @@ module.exports = {
       template: path.join(__dirname, "./client/src", "./index.html"),
       inject: 'body'
     }),
+    new ESLintPlugin(),
   ],
 }
