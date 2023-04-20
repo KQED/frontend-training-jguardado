@@ -1,12 +1,12 @@
 import React from 'react'
 import { Provider } from 'react-redux'
-import { store } from './store'
-import { Container } from './container'
+import { store } from './redux/store'
+import Counter from './container'
 
 export const App = () => {
   return (
     <Provider store = { store }>
-    <Container />
+    <Counter />
     </Provider>
   )
 }

@@ -1,17 +1,34 @@
 
+import React from 'react'
 import { connect } from 'react-redux'
-import { Component } from './component'
+import { increment, decrement } from './redux/slice'
 
 const mapStateToProps = state => {
   return {
-    count: state
+    count: state.count,
+    message: state.payload
   }
 }
 
-const mapDispatchToProps = dispatch => {
+function mapDispatchToProps (dispatch) {
   return {
-    handleIncrement: () => dispatch({ type: 'INCREMENT', payload: 'Value of state increment by 1' }),
-    handleDecrement: () => dispatch({ type: 'DECREMENT', payload: 'Value of state decrement by 1' })
+    incrementCounter: (message) => dispatch(increment(message)),
+    decrementCounter: (message) => dispatch(decrement(message))
   }
 }
-export const Container = connect(mapStateToProps, mapDispatchToProps)(Component)
+
+const Counter = (props) => {
+  console.log('props', props)
+  return (
+    <>
+    <div>
+     <h1>hello world via React and Redux { props.count }</h1>
+    <button onClick={() => props.incrementCounter('Incremented!')}>Increment</button>
+    <button onClick={() => props.decrementCounter('Decremented!')}>Decrement</button>
+    <h1> { props.message } </h1>
+  </div>
+  </>
+  )
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Counter)
