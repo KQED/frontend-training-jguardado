@@ -1,7 +1,7 @@
 import React from 'react'
 import { Provider } from 'react-redux'
 import { store } from './redux/store'
-import Counter from './container'
+import Counter from './component/counter.js'
 
 export const App = () => {
   return (
