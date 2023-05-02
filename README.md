@@ -8,6 +8,8 @@ This repository will contain the frontend training ticket PRs, part of the KQED 
 
 ```yarn start```
 
+Head over to: localhost:5001/
+
 ## KSM-4447 --> Modify the first app to use redux
 
 As you know each component has it's own state. However, in a large complex application we would like to have a "master" state that can be used across the the entire application.
