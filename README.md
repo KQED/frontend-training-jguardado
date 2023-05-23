@@ -8,7 +8,7 @@ This repository will contain the frontend training ticket PRs, part of the KQED 
 
 ```yarn start```
 
-Head over to: localhost:5001/
+Head over to: http://localhost:3000/
 
 ## KSM-4447 --> Modify the first app to use redux
 
