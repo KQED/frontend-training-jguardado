@@ -3,19 +3,18 @@ const app = express()
 
 app.use(express.json()) // JSON parser
 
-let userIsSet = false;
+let userIsSet = false
 
-app.get('/get-user/:id', (req, res) => {  //:id is a dynamic variable
-  let response = {
+app.get('/get-user/:id', (req, res) => { // :id is a dynamic variable
+  const response = {
     id: req.params.id,
     firstName: req.query.firstName,
-    lastName: req.query.lastName,
+    lastName: req.query.lastName
   }
   if (response.firstName === null || response.firstName === '') {
     console.error('Please enter a valid response')
   } else {
-
-    res.status(200).send({                // send back user data
+    res.status(200).send({ // send back user data
       id: response.id,
       firstName: response.firstName,
       lastName: response.lastName
@@ -24,26 +23,22 @@ app.get('/get-user/:id', (req, res) => {  //:id is a dynamic variable
 })
 
 app.post('/set-user/:id', (req, res) => {
-
-  let response = {
+  const response = {
     id: req.params.id,
     firstName: req.query.firstName,
     lastName: req.query.lastName
   }
-
   if (response.firstName === null || response.firstName === '') {
     console.error('Please enter a valid response')
   } else {
-    userIsSet = true;
-    console.log('firstname: ', response.firstName, 'lastName: ', response.lastName, 'User is set?: ', userIsSet)
+    userIsSet = true
+    res.status(200).send({ // send back user data with a flag
+      id: response.id,
+      firstName: response.firstName,
+      lastName: response.lastName,
+      userIsSet: userIsSet
+    })
   }
-
-  res.status(200).send({                   // send back user data with a flag
-    id: response.id,
-    firstName: response.firstName,
-    lastName: response.lastName,
-    userIsSet: true
-  })
 })
 
 app.listen(3001, () => { console.log('api-server started on Port: 3001!') })
