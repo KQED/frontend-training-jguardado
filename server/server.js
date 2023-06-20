@@ -19,4 +19,4 @@ indexRouter.get('*', (req, res) => {
 
 app.use(config.baseUrl, indexRouter)
 
-app.listen(5001, () => { console.log('Server started on port 5001') })
+app.listen(3000, () => { console.log('Server started on port 3000') })
