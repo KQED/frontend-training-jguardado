@@ -10,6 +10,21 @@ This repository will contain the frontend training ticket PRs, part of the KQED 
 
 Head over to: http://localhost:3000/
 
+## KSM-4584 --> Create an express application for an API
+We are going to create a simple API.
+It will be another express application
+It will be similar to your current “server” in your training module. However, this new api server will serve JSON data, not UI code/html
+To make things simple we will create a new folder in your training application called “api”.
+In this “api” folder we will create a file called “api-server.js”
+You will create a new server with the following attributes
+It will have two endpoints
+/get-user/$id
+sends back dummy user data in json
+/set-user/$id
+takes user data in json and then sends it back with a flag set
+It will run on port 3001
+To test you will use Postman
+
 ## KSM-4447 --> Modify the first app to use redux
 
 As you know each component has it's own state. However, in a large complex application we would like to have a "master" state that can be used across the the entire application.
