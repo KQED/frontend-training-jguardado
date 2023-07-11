@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { addUser, error, fetchUsers, getAllUsers, modifyUser } from '../redux/apiSlice'
+//import { addUser, error, getAllUsers, modifyUser } from '../redux/apiSlice'
 
 export default function Login() {
   const [firstName, setFirstName] = useState('')
@@ -27,8 +27,6 @@ export default function Login() {
     console.log('First Name:', firstName)
     console.log('Last Name:', lastName)
     console.log('users: ', users) // print users array
-
-    
   }
 
   const handleFirstNameChange = (e) => {
@@ -41,11 +39,11 @@ export default function Login() {
 
   const [users, setUsers] = useState([])
 
-  useEffect(() => {
+  /*useEffect(() => {
     fetchUsers()
-  }, [])
+  }, [])*/
 
-  const fetchUsers = () => {
+  /*const fetchUsers = () => {
     fetch('http://localhost:3001/get-users')
       .then((response) => response.json())
       .then((data) => {
@@ -54,7 +52,7 @@ export default function Login() {
       .catch((error) => {
         console.error('Error fetching users:', error)
       })
-  }
+  }*/ 
 
 
   return (

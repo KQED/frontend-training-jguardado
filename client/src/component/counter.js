@@ -1,10 +1,11 @@
 import { useSelector, useDispatch } from 'react-redux'
-import { increment, decrement } from '../redux/counterSlice'
+import { increment, decrement} from '../redux/counterSlice'
 import React, { useEffect } from 'react'
 
 const Counter = () => {
-  const count = useSelector(state => state.count)
-  const message = useSelector(state => state.message)
+  
+  const count = useSelector(state => state.countRed.count)
+  const message = useSelector(state => state.countRed.message)
   const dispatch = useDispatch()
 
   useEffect(() => {

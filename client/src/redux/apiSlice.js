@@ -1,55 +1,77 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
-  loading: true,
-  data: JSON.parse(localStorage.getItem('users')),
+  data: '_filler_',
   message: ''
 }
 
-const userSlice = createSlice({
+export const userSlice = createSlice({
   name: 'users',
   initialState: initialState,
   reducers: {
-    addUser: (state, action) => {
-      const user = action.payload
-      state.data.users.push(user)
-      state.loading = false
-      state.message = 'User successfully added'
+    fetchAllUsers: (state, action) => {
+      let data = action.payload
+      state.userList = data
+      state.isLoading = false
+      state.error = null
     },
-    error: (state) => {
+    setIsLoading: (state) => {    //track progress, make copy and store it somewhere
       state.data = null
-      state.message = 'error occured'
+      state.isLoading = true  // implies state has no data to give
+      state.error =  null
     },
-    getAllUsers: (state, action) => {
-      state.data = action.payload
-      state.loading = false
-      localStorage.setItem('users', JSON.stringify(state.data))
-    },
-    modifyUser: (state, action) => {  // reducer for modifying user data
-
+    setError: (state, action) => {
+      let error = action.payload 
+      state.data = ''
+      state.isLoading = false
+      state.error = error     // error is the variable
     }
-  }
+    // ** add a reducer to add more users **
+    // this reducer will push new users into the
+    // already existing 'users' array
+  },
 })
 
-const fetchUsers = (id, userData) => {
-  fetch(`http://localhost:3001/update-user/${id}`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(userData)
-  })
-    .then((response) => response.json())
-    .then((data) => {
-      console.log(data) // Log the response data
-    })
-    .catch((error) => {
-      console.error('Error:', error)
-    })
+//  export actions
+export const { fetchAllUsers, setIsLoading, setError
+ } = userSlice.actions
+
+ export const getAllUsers = () => {
+  return (dispatch, getState) => {
+    const { users } = getState()
+
+    if (users.data) { // need to see if there is data
+      return
+    }
+
+    dispatch(setIsLoading())
+
+    const url = 'http://localhost:3001/users'
+    const requestOptions = {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }
+
+    fetch(url, requestOptions)
+      .then((response) => {
+        if(response.ok) {
+          return response.json()
+        }
+      })
+      .then(
+        (response) => {
+          dispatch(fetchAllUsers({ allUsers: response }))
+          console.log("response", response)
+        }
+      )
+      .catch(error => {
+        dispatch(setError(error.message))
+      })
+  }
 }
 
-//  export actions
-export const { addUser, error, getAllUsers, modifyUser } = userSlice.actions
-
 //  export reducer
-export const fetchRed = userSlice.reducer
+//export default userSlice.reducer
+export const userRed = userSlice.reducer     // <-- userRed variable fixes ' "reducer" is a required argument ', error

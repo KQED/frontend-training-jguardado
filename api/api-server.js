@@ -10,6 +10,11 @@ let userIsSet = false
 
 let users = [{ firstName: 'Bob', lastName: 'H.' }, { firstName: 'Frank', lastName: 'S.' }, { firstName: 'Frankie', lastName: 'V.' }] // starter dummy data
 
+
+app.get('/users', (req, res) => { // send back all users
+  res.send(users)
+})
+
 app.get('/get-user/:id', (req, res) => { // :id is a dynamic variable
   const response = {
     id: req.params.id,
@@ -25,27 +30,6 @@ app.get('/get-user/:id', (req, res) => { // :id is a dynamic variable
       firstName: users[response.id].firstName,
       lastName: users[response.id].lastName
     })
-  }
-})
-
-app.get('/get-users', (req, res) => {
-  res.status(200).send(users)
-})
-app.post('/update-user/:id', (req, res) => {
-  const userId = req.params.id
-  const { firstName, lastName } = req.body
-
-  // Find the user with the specified id in the users array
-  const user = users.find((user, index) => String(index) === userId)
-
-  if (!user) {
-    res.status(404).json({ message: 'User not found' })
-  } else {
-    // Update the user's firstName and lastName
-    user.firstName = firstName
-    user.lastName = lastName
-
-    res.status(200).json({ message: 'User updated successfully' })
   }
 })
 
@@ -68,13 +52,5 @@ app.post('/set-user/:id', (req, res) => {
     })
   }
 })
-
-// modify existing data on API
-/*app.put('/modify-user/:id', (req, res) => {   // 
-  const id = req.params.id
-
-  console.log(req.body)
-
-})*/
 
 app.listen(3001, () => { console.log('api-server started on Port: 3001!') })
