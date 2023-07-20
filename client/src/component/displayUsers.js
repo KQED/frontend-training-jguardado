@@ -1,11 +1,15 @@
 // file strictly for rendering users on the front end
 import React, { useEffect, useState } from 'react'
-import { fetchAllUsers, getAllUsers, addUser } from '../redux/apiSlice'
+import { getAllUsers, addUser } from '../redux/apiSlice'
 import { useDispatch, useSelector } from 'react-redux'
+import '../App.css'
 
-export default function Login() {
+export default function Login () {
   const allUserData = useSelector(state => state.userReducer.userList)
-  //const state = useSelector(state => state.users.data)
+  const [isDisplayed, setIsDisplayed] = useState(false)
+  const handleUserList = () => {
+    setIsDisplayed(!isDisplayed)
+  }
   const [firstName, setFirstName] = useState('')
   const [lastName, setLastName] = useState('')
   const dispatch = useDispatch()
@@ -15,19 +19,13 @@ export default function Login() {
 
     const userData = {
       firstName: firstName,
-      lastName: lastName,
+      lastName: lastName
     }
-
-    setFirstName('-')
-    setLastName('-')
-
-    //dispatch(fetchAllUsers())
-    dispatch(addUser(userData));
-
-    console.log('1: First Name:', firstName)
-    console.log('2: Last Name:', lastName)
-    console.log('3: users: ', allUserData) // print users array
-   
+    if (userData.firstName !== '') {
+      dispatch(addUser(userData))
+    }
+    setFirstName('')
+    setLastName('')
   }
 
   const handleFirstNameChange = (e) => {
@@ -44,30 +42,39 @@ export default function Login() {
 
   return (
     <div>
+      <h1>KQED v1.0 alpha</h1>
       <form onSubmit={handleSubmit}>
         <label>
-          Firstname: <input type='text' name='firstName' value={firstName} onChange={handleFirstNameChange} />
+          Firstname: <input type='text' name='firstName' className='input' value={firstName} onChange={handleFirstNameChange} />
         </label>
         <label>
-          Lastname: <input type='text' name='lastName' value={lastName} onChange={handleLastNameChange} />
+          Lastname: <input type='text' name='lastName' className='input' value={lastName} onChange={handleLastNameChange} />
         </label>
-        <button type='submit'>Submit</button>
+        <button type='submit' className='button'>Submit</button>
       </form>
-
-      <div>
-        {/* Render the users array */}
-        {allUserData ? (
-          allUserData.map((user) => (
-            <div key={user.id}>
-              <p>First Name: {user.firstName}</p>
-              <p>Last Name: {user.lastName}</p>
+      <div className='userbutton'>
+        {!isDisplayed
+          ? <button className='hidebutton' onClick={handleUserList}> Show </button>
+          : <div>
+            <button className='hidebutton' onClick={handleUserList}> Hide </button>
+            <div className='userlist'>
+              {/* Render the users array */}
+              {allUserData
+                ? (
+                    allUserData.map((user) => (
+                    <div key={user.id} className='users'>
+                      <p>First Name: {user.firstName}</p>
+                      <p className='lastname'>Last Name: {user.lastName}</p>
+                    </div>
+                    ))
+                  )
+                : (
+                  <p>Loading users...</p>
+                  )}
             </div>
-          ))
-        ) : (
-          <p>Loading users...</p>
-        )}
+          </div>
+        }
       </div>
     </div>
   )
 }
-
