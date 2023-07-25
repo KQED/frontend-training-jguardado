@@ -1,11 +1,19 @@
+//const { response } = require('express')
 const express = require('express')
 const app = express()
+const cors = require('cors')
 
+app.use(cors())
 app.use(express.json()) // JSON parser
 
 let userIsSet = false
 
-const users = [{ firstName: 'Bob', lastName: 'H.' }, { firstName: 'Frank', lastName: 'S.' }, { firstName: 'Frankie', lastName: 'V.' }] // starter dummy data
+let users = [{ firstName: 'Bob', lastName: 'H.' }, { firstName: 'Frank', lastName: 'S.' }, { firstName: 'Frankie', lastName: 'V.' }] // starter dummy data
+
+
+app.get('/users', (req, res) => { // send back all users
+  res.send(users)
+})
 
 app.get('/get-user/:id', (req, res) => { // :id is a dynamic variable
   const response = {
@@ -35,7 +43,7 @@ app.post('/set-user/:id', (req, res) => {
     console.error('Please enter a valid response')
   } else {
     userIsSet = true
-    users.push({ firstName: response.firstName, lastName: response.lastName })
+    users = users.push({ firstName: response.firstName, lastName: response.lastName })
     res.status(200).send({ // send back user data with a flag
       id: response.id,
       firstName: users[response.id].firstName,
