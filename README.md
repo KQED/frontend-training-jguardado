@@ -1,61 +1,83 @@
 # frontend-training-jguardado
 
-This repository will contain the frontend training ticket PRs, part of the KQED Software Engineering Internship program.
+This repository will contain the frontend training ticket PRs, part of the KQED Software Engineering Internship program. 
 
 # Run
+```npm i```
 
-```install npm/yarn```
+```npm install yarn```
 
 ```yarn start```
 
-Head over to: http://localhost:3000/
+Head over to: ```http://localhost:3000/```
 
-## KSM-4584 --> Create an express application for an API
-We are going to create a simple API.
-It will be another express application
-It will be similar to your current “server” in your training module. However, this new api server will serve JSON data, not UI code/html
-To make things simple we will create a new folder in your training application called “api”.
-In this “api” folder we will create a file called “api-server.js”
-You will create a new server with the following attributes
-It will have two endpoints
-/get-user/$id
-sends back dummy user data in json
-/set-user/$id
-takes user data in json and then sends it back with a flag set
-It will run on port 3001
-To test you will use Postman
+## KSM-4657: Setup the Redis Database and learn the basics of it's CLI
+To demonstrate the usage of the Redis CLI, follow these steps:
 
-## KSM-4447 --> Modify the first app to use redux
+1. Install Redis: ```https://redis.io/docs/getting-started/installation/install-redis-on-mac-os/```
 
-As you know each component has it's own state. However, in a large complex application we would like to have a "master" state that can be used across the the entire application.
-This "master" state is known as a Redux Store (or just store). Another feature of this paradigm is having an event called "dispatch". When you call "dispatch" you can send data from where ever in your app to the store. When the store updates it will trigger the updates on the components (just like a local state would!)
-Install redux for your existing training project:
-https://react-redux.js.org/introduction/getting-started
-Create a subcomponent in your application
-The component should display some "data"
-The component should have some sort of "button"
-When you click the button it should fire off the "dispatch"
-The dispatch should have some sort of data as a payload
-The store should update
-The component should display the new data from the store
-We are using redux 4, do not use redux 3
+2. Open a terminal and start the Redis server by running the following command:
 
-## KSM-4406 --> Add eslint to the webpack build cycle
+   ```redis-server```
 
-enable eslint in your project
-add `eslint` as a package and use the `.eslintrc.json` config (get from Jason)
-add an alias in your `package.json` to run `eslint`
-add a configuration to your webpack so when it builds it also runs eslint
-fix any errors/warning eslint gives
+3. In a new terminal window, start the Redis CLI to interact with the Redis server:
 
-## KSM-4229 --> "Hello KQED" React App
+   ```redis-cli```
 
-Using your Node/Express app setup. Create a simple single component React application. Integrate Webpack and Babel to transpile your .jsx code and have the Node/Express App deliver the React App. Focus on running and setting up from the cli. Track your progress via commits
+4. Use the `SET` command to add data to Redis. The syntax is `SET key value`.
+
+   ```SET name "John Doe"```
+  This will set the key "name" with the value "John" in the default database (database 0).
+
+5. Use the `GET` command to retrieve data from Redis. The syntax is `GET key`.
+
+   ```GET name```
+  This will return the value associated with the key "name," which is "John" in this case.
+
+6. Use the `DEL` command to remove data from Redis. The syntax is `DEL key`.
+
+   ```DEL name```
+  This will delete the key "name" along with its associated value.
+
+7. Redis allows you to work with multiple databases. By default, there are 16 databases numbered from 0 to 15. To switch to a different database, use the `SELECT` command. The syntax is `SELECT index`, where "index" is the database number (0 to 15).
+
+   ```SELECT 1```
+  This will switch to database 1, and any subsequent commands will be executed in this database.
+
+  Redis is an in-memory key/value store, and any data you add to it will be lost when you stop the Redis server.
+
+## KSM-4641: Create redux actions to fetch and set data on your API
+I have implemented two Redux actions, one for fetching data from the API and another for setting data to modify the API. The API uses a variable to store the data, which means any saved data will be lost upon restarting the API. On the front end, I used a form to input, modify, and display the data.
+
+## KSM-4584: Create an express application for an API
+We created a simple API for the training project. It is an express application, separate from the current "server." This new API server serves JSON data instead of UI code/html. We created a new folder in the training application called "api," and within this folder, we added a file named "api-server.js."
+
+The new server has the following attributes:
+
+It has two endpoints: ```/get-user/$id``` and ```/set-user/$id```.
+The ```/get-user/$id``` endpoint sends back dummy user data in JSON format.
+The ```/set-user/$id``` endpoint takes user data in JSON format, processes it, and then sends it back with a flag set.
+The server runs on port ```3001```.
+To test the API, we used Postman.
+
+## KSM-4447: Modify the first app to use redux
+
+In my existing training project, I installed Redux version 4 and created a subcomponent that displayed some "data." The component had a "button" that, when clicked, fired off the "dispatch" action with data as the payload. The Redux Store updated successfully, and the component displayed the new data from the store.
+
+## KSM-4406: Add eslint to the webpack build cycle
+
+ESLint has been enabled in the project. I added eslint as a package and utilized the .eslintrc.json config received from Jason. Additionally, I set up an alias in the package.json to run eslint conveniently. Furthermore, I configured webpack to execute ESLint during the build process, so any potential errors or warnings identified by ESLint are automatically addressed.
+
+All identified ESLint errors and warnings have been fixed, ensuring the code meets the linting standards specified in the configuration. The project is now properly set up with ESLint integration to maintain code quality and consistency.
+
+## KSM-4229: "Hello KQED" React App
+
+I have integrated React into the existing Node/Express application, using Webpack and Babel to transpile the .jsx code. I also added package.json scripts to facilitate running and transpiling the React application. Each step of the setup process has been committed, allowing you to track the progress.
 Required implementations:
 - package.json scripts to alias Node/Express start up
 - package.json scripts to alias a single transpile of the React code
 - package.json scripts to alias a watch transpile of the React code
 
-## KSM-4227 --> Barebones Node/Express App
+## KSM-4227: Barebones Node/Express App
 
-Setup a node/express application that delivers a 'hello world' page from localhost. Do not use a framework. Write from scratch and create a new git repo. Track your progress via commits. Focus on running and setting up from the cli.
+I have set up a new Node/Express application from scratch without using any framework. I created a new git repository to track my progress via commits. The application delivers a 'hello world' page when accessed from localhost.
