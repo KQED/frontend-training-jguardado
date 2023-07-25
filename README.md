@@ -27,7 +27,7 @@ To demonstrate the usage of the Redis CLI, follow these steps:
 4. Use the `SET` command to add data to Redis. The syntax is `SET key value`.
 
    ```SET name "John Doe"```
-  This will set the key "name" with the value "John" in the default database (database 0).
+  This will set the key "name" with the value "John Doe" in the default database (database 0).
 
 5. Use the `GET` command to retrieve data from Redis. The syntax is `GET key`.
 
