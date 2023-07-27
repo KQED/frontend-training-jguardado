@@ -39,10 +39,10 @@ Head over to: [http://localhost:3000/](http://localhost:3000/)
 Redis is an in-memory key/value store, and any data you add to it will be lost when you stop the Redis server.
 
 ## KSM-4641: Create redux actions to fetch and set data on your API
-I have implemented two Redux actions, one for fetching data from the API and another for setting data to modify the API. The API uses a variable to store the data, which means any saved data will be lost upon restarting the API. On the front end, I used a form to input, modify, and display the data.
+Two Redux actions have been implemented, one for fetching data from the API and another for setting data to modify the API. The API uses a variable to store the data, which means any saved data will be lost upon restarting the API. On the front end, there is a form to input, modify, and display the data.
 
 ## KSM-4584: Create an express application for an API
-We created a simple API for the training project. It is an express application, separate from the current "server." This new API server serves JSON data instead of UI code/html. We created a new folder in the training application called "api," and within this folder, we added a file named "api-server.js."
+Created a simple API for the training project. It is an express application, separate from the current "server." This new API server serves JSON data instead of UI code/html. A new folder was added in the training application called "api," and within this folder, a file named "api-server.js" has been added.
 
 The new server has the following attributes:
 
@@ -53,23 +53,21 @@ The server runs on port ```3001```.
 To test the API, we used Postman.
 
 ## KSM-4447: Modify the first app to use redux
-
-In my existing training project, I installed Redux version 4 and created a subcomponent that displayed some "data." The component had a "button" that, when clicked, fired off the "dispatch" action with data as the payload. The Redux Store updated successfully, and the component displayed the new data from the store.
+In the existing training project, I installed Redux version 4 and created a subcomponent that displayed some "data." The component has `increase` and `decrease` buttons that, when clicked, fired off the "dispatch" action with data as the payload. The Redux Store updated successfully, and the component displays the new value from the store.
 
 ## KSM-4406: Add eslint to the webpack build cycle
+ESLint has been enabled in the project. ESlint was added as a package and utilized the `.eslintrc.json` config. An alias has been set up in the package.json to run eslint conveniently. I configured webpack to execute ESLint during the build and watch process, so any potential errors or warnings identified by ESLint are automatically addressed.
 
-ESLint has been enabled in the project. I added eslint as a package and utilized the .eslintrc.json config received from Jason. Additionally, I set up an alias in the package.json to run eslint conveniently. Furthermore, I configured webpack to execute ESLint during the build process, so any potential errors or warnings identified by ESLint are automatically addressed.
-
-All identified ESLint errors and warnings have been fixed, ensuring the code meets the linting standards specified in the configuration. The project is now properly set up with ESLint integration to maintain code quality and consistency.
+Script implementation:
+- ```eslint```   package.json script to run ESlint.
 
 ## KSM-4229: "Hello KQED" React App
+I have integrated React into the existing Node/Express application, using Webpack and Babel to transpile the .jsx code. Package.json scripts were added to facilitate running and transpiling the React application.
 
-I have integrated React into the existing Node/Express application, using Webpack and Babel to transpile the .jsx code. I also added package.json scripts to facilitate running and transpiling the React application. Each step of the setup process has been committed, allowing you to track the progress.
-Required implementations:
+Script implementations:
 - ```start```   package.json script to alias Node/Express start up
 - ```build```   package.json script to alias a single transpile of the React code
 - ```watch```   package.json script to alias a watch transpile of the React code
 
 ## KSM-4227: Barebones Node/Express App
-
-I have set up a new Node/Express application from scratch without using any framework. I created a new git repository to track my progress via commits. The application delivers a 'hello world' page when accessed from localhost.
+I have set up a new Node/Express application from scratch without using any framework. This repository will be used to track my progress via commits. The application delivers a 'hello world via React and Redux' page when accessed from `localhost`.
