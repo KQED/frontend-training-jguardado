@@ -15,7 +15,6 @@ const Counter = () => {
   return (
     <>
       <div className='counter'>
-        <h1>hello world via React and Redux</h1>
         <h1>Count: {count}</h1>
         <button className='countbutton' onClick={() => dispatch(increment())}>Increment</button>
         <button className='countbutton' onClick={() => dispatch(decrement())}>Decrement</button>

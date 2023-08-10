@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react'
 import { getAllUsers, addUser } from '../redux/apiSlice'
 import { useDispatch, useSelector } from 'react-redux'
-import '../App.css'
+import '../App.scss'
 
 export default function Login () {
   const allUserData = useSelector(state => state.userReducer.userList)
@@ -41,8 +41,7 @@ export default function Login () {
   }, [dispatch])
 
   return (
-    <div>
-      <h1>KQED v1.0 alpha</h1>
+    <div className='login'>
       <form onSubmit={handleSubmit}>
         <label>
           Firstname: <input type='text' name='firstName' className='input' value={firstName} onChange={handleFirstNameChange} />
