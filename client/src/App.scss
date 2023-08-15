@@ -1,104 +1,167 @@
 /* General styles */
 h1 {
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+/* Buttons */
+.button {
+  margin-left: 100px;
+  border-radius: 5px;
+}
+
+.button:hover {
+  color: darkgreen;
+}
+
+.hidebutton {
+  border-radius: 5px;
+}
+
+.countbutton {
+  justify-content: center;
+}
+
+/* Form and Input */
+.login {
+  display: flex;
+  justify-content: flex-end;
+  float: right;
+  margin-left: auto;
+}
+
+.counter {
+  display: grid;
+  justify-content: center;
+}
+
+.input {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  align-items: flex-start;
+  border-radius: 5px;
+}
+
+/* User List */
+.userlist {
+  background: #fff;
+  border: 1px solid black;
+  border-radius: 5px;
+  width: 90%;
+  margin-top: 25px;
+  color: black;
+}
+
+.users {
+  display: flex;
+  justify-content: center;
+}
+
+.lastname {
+  padding-left: 5rem;
+}
+
+nav {
+  display: flex;
+  padding-right: auto;
+
+  .navBtn {
+    font-size: 1.5rem;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-  }
-  
-  /* Buttons */
-  .button {
-    margin-left: 100px;
-    border-radius: 5px;
-  }
-  
-  .button:hover {
-    color: darkgreen;
-  }
-  
-  .hidebutton {
-    border-radius: 5px;
-  }
-  
-  .countbutton {
-    justify-content: center;
-  }
-  
-  /* Form and Input */
-    .login {
-      display: flex;
-      justify-content: flex-end;
-      float: right;
-      margin-left: auto;
+    display: flex;
+
+    align-items: center;
+    background-color: lightgray;
+    border: 2px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: gray;
     }
-  
-  .counter {
-    display: grid;
-    justify-content: center;
   }
-  
+}
+
+.navbar {
+  background: whitesmoke;
+  opacity: 0.7;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  /* Distribute space evenly */
+
+  .title {
+    margin-right: auto;
+  }
+
+  &.login {
+    margin-left: auto;
+  }
+}
+
+
+body {
+  background-color: #efbebf;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cg fill='%23f16a86' fill-opacity='0.4'%3E%3Cpolygon fill-rule='evenodd' points='8 4 12 6 8 8 6 12 4 8 0 6 4 4 6 0 8 4'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+/* Media query for mobile */
+@media (max-width: 767px) {
+  label {
+    font-size: .9rem;
+  }
+
+  .button {
+    margin-left: 80px;
+    border-radius: 5px;
+  }
+
   .input {
     display: grid;
     grid-template-columns: 1fr 300px;
     align-items: flex-start;
     border-radius: 5px;
-  }
-  
-  /* User List */
-  .userlist {
-    background: #fff;
-    border: 1px solid black;
-    border-radius: 5px;
-    width: 90%;
-    margin-top: 25px;
-    color: black;
-  }
-  
-  .users {
-    display: flex;
-    justify-content: center;
-  }
-  
-  .lastname {
-    padding-left: 5rem;
+    width: 75%;
   }
 
   nav {
     display: flex;
-    align-items: stretch;
-  
+    padding-right: auto;
+
     .navBtn {
-      flex: 1;
+      font-size: 1.1rem;
+      font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
       display: flex;
-      justify-content: center;
+
       align-items: center;
       background-color: lightgray;
-      border: none;
+      border: 2px;
       cursor: pointer;
       transition: background-color 0.3s ease;
-  
+
       &:hover {
         background-color: gray;
       }
     }
   }
-  
+
   .navbar {
     background: whitesmoke;
     opacity: 0.7;
     display: flex;
     flex-direction: row;
-    align-items: center; 
-    justify-content: space-between; /* Distribute space evenly */
-    
+    align-items: center;
+    justify-content: space-between;
+    /* Distribute space evenly */
+
     .title {
-      width: 50%;
+      margin-right: auto;
+      font-size: 1.1rem;
     }
-    
-    .login {
+
+    &.login {
       margin-left: auto;
     }
   }
-  
 
-body {
-  background-color: #efbebf;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cg fill='%23f16a86' fill-opacity='0.4'%3E%3Cpolygon fill-rule='evenodd' points='8 4 12 6 8 8 6 12 4 8 0 6 4 4 6 0 8 4'/%3E%3C/g%3E%3C/svg%3E");
 }

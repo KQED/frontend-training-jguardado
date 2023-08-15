@@ -9,30 +9,32 @@ const Navbar = () => {
     navigate('/home')
   }
 
-  const handleBlogButtonClick = () => {
-    navigate('/blog')
-  }
-
   const handleCountButtonClick = () => {
     navigate('/counter')
   }
 
+  const handleAboutButtonClick = () => {
+    navigate('/about')
+  }
+
+  const handleContactButtonClick = () => {
+    navigate('/contact')
+  }
 
   return (
-    <header>
-      <div className='navbar'>
-        <h1 className='title'>KQED v1.0 alpha</h1>
-        <nav>
+  <div className='navbar'>
+    <h1 className='title'>KQED v1.0 alpha</h1>
+      <nav>
           <button className='navBtn' onClick={handleHomeButtonClick}>Home</button>
-          <button className='navBtn' onClick={handleBlogButtonClick}>Blog</button>
           <button className='navBtn' onClick={handleCountButtonClick}>Count</button>
-        </nav>
-        <div className='login'>
-          {/* Form Component will be part of the Navbar*/}
-          <Login />
-        </div>
-      </div>
-    </header>
+          <button className='navBtn' onClick={handleContactButtonClick}>Contact</button>
+          <button className='navBtn' onClick={handleAboutButtonClick}>About</button>
+      </nav>
+    <div className='login'>
+      {/* Form Component will be part of the Navbar */}
+      <Login />
+    </div>
+  </div>
   )
 }
 
