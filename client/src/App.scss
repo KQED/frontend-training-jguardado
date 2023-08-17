@@ -112,7 +112,8 @@ body {
   }
 
   .button {
-    margin-left: 80px;
+    font-size: .9rem;
+    margin-left: 10px;
     border-radius: 5px;
   }
 
@@ -129,39 +130,17 @@ body {
     padding-right: auto;
 
     .navBtn {
-      font-size: 1.1rem;
-      font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-      display: flex;
-
-      align-items: center;
-      background-color: lightgray;
-      border: 2px;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-
-      &:hover {
-        background-color: gray;
-      }
+      font-size: .9rem;
     }
   }
 
-  .navbar {
-    background: whitesmoke;
-    opacity: 0.7;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    /* Distribute space evenly */
-
-    .title {
+  .title {
       margin-right: auto;
-      font-size: 1.1rem;
-    }
+      font-size: .8rem;
+  }
 
-    &.login {
-      margin-left: auto;
-    }
+  .userbutton {
+    display: none;
   }
 
 }
