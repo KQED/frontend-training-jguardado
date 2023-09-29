@@ -4,9 +4,7 @@ This repository will contain the frontend training ticket PRs, part of the KQED 
 application was developed using the CLI and Visual Studio Code. Read more about the progress [here](/progress.md).
 
 ## Run Instructions
-Install dependencies: ```npm i```
-
-Install yarn: ```npm install yarn```
+Install yarn globally: ```npm install -g yarn```
 
 Start the application: ```yarn start```
 
